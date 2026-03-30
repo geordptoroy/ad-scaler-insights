@@ -7,6 +7,8 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { Badge } from "@/components/ui/badge";
 import { useState } from "react";
 import { LayoutGrid, List, Image, Video, Layers } from "lucide-react";
+import { AdDetailModal } from "@/components/AdDetailModal";
+import type { Ad } from "@/types/api.types";
 
 const mediaIcons = {
   image: Image,
@@ -18,6 +20,7 @@ export default function ScaledAds() {
   const [view, setView] = useState<"grid" | "list">("grid");
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
+  const [selectedAd, setSelectedAd] = useState<Ad | null>(null);
 
   const { data, isLoading } = useQuery({
     queryKey: ["scaled-ads", page],
@@ -113,7 +116,7 @@ export default function ScaledAds() {
                   <span className="text-muted-foreground">
                     {ad.daysActive} dias no ar
                   </span>
-                  <Button variant="ghost" size="sm" className="h-7 text-xs">
+                  <Button variant="ghost" size="sm" className="h-7 text-xs" onClick={() => setSelectedAd(ad)}>
                     Ver Detalhes
                   </Button>
                 </div>
@@ -142,6 +145,8 @@ export default function ScaledAds() {
                   <th className="text-left p-3 text-muted-foreground font-medium">
                     Score
                   </th>
+                  <th className="text-left p-3 text-muted-foreground font-medium">
+                  </th>
                 </tr>
               </thead>
               <tbody>
@@ -168,6 +173,11 @@ export default function ScaledAds() {
                         {ad.score}
                       </Badge>
                     </td>
+                    <td className="p-3">
+                      <Button variant="ghost" size="sm" className="h-7 text-xs" onClick={() => setSelectedAd(ad)}>
+                        Ver Detalhes
+                      </Button>
+                    </td>
                   </tr>
                 ))}
               </tbody>
@@ -175,6 +185,8 @@ export default function ScaledAds() {
           </div>
         </Card>
       )}
+
+      <AdDetailModal ad={selectedAd} open={!!selectedAd} onOpenChange={(open) => !open && setSelectedAd(null)} />
 
       {/* Pagination */}
       {data && data.totalPages > 1 && (
