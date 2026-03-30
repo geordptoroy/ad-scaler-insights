@@ -179,6 +179,8 @@ export default function ScaledAds() {
         </Card>
       )}
 
+      <AdDetailModal ad={selectedAd} open={!!selectedAd} onOpenChange={(open) => !open && setSelectedAd(null)} />
+
       {/* Pagination */}
       {data && data.totalPages > 1 && (
         <div className="flex items-center justify-center gap-2">
