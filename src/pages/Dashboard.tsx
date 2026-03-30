@@ -19,6 +19,17 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
+import { motion } from "framer-motion";
+import { staggerContainer, fadeInUp } from "@/components/PageTransition";
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  ResponsiveContainer,
+} from "recharts";
 
 function MetricCard({
   title,
