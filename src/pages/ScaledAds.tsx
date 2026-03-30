@@ -116,7 +116,7 @@ export default function ScaledAds() {
                   <span className="text-muted-foreground">
                     {ad.daysActive} dias no ar
                   </span>
-                  <Button variant="ghost" size="sm" className="h-7 text-xs">
+                  <Button variant="ghost" size="sm" className="h-7 text-xs" onClick={() => setSelectedAd(ad)}>
                     Ver Detalhes
                   </Button>
                 </div>
