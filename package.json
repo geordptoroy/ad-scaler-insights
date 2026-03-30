@@ -10,7 +10,11 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "docker:build": "docker build -t forte-media-frontend .",
+    "docker:run": "docker run -p 8080:8080 --env-file .env forte-media-frontend",
+    "docker:compose-up": "docker-compose up -d",
+    "docker:compose-down": "docker-compose down"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
