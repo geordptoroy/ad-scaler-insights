@@ -19,6 +19,8 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
+import { motion } from "framer-motion";
+import { staggerContainer, fadeInUp } from "@/components/PageTransition";
 
 function MetricCard({
   title,
@@ -106,29 +108,42 @@ export default function Dashboard() {
           ))}
         </div>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          <MetricCard
-            title="Anúncios Escalados"
-            value={stats?.totalScaledAds ?? 0}
-            icon={TrendingUp}
-          />
-          <MetricCard
-            title="Média de Gasto"
-            value={stats?.averageSpend.formatted ?? "—"}
-            icon={DollarSign}
-          />
-          <MetricCard
-            title="Páginas Únicas"
-            value={stats?.totalPages ?? 0}
-            icon={Users}
-          />
-          <MetricCard
-            title="Tendência"
-            value={`+${stats?.trendPercentage ?? 0}%`}
-            icon={BarChart3}
-            subtitle="nos últimos 30 dias"
-          />
-        </div>
+        <motion.div
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"
+          variants={staggerContainer}
+          initial="initial"
+          animate="animate"
+        >
+          <motion.div variants={fadeInUp}>
+            <MetricCard
+              title="Anúncios Escalados"
+              value={stats?.totalScaledAds ?? 0}
+              icon={TrendingUp}
+            />
+          </motion.div>
+          <motion.div variants={fadeInUp}>
+            <MetricCard
+              title="Média de Gasto"
+              value={stats?.averageSpend.formatted ?? "—"}
+              icon={DollarSign}
+            />
+          </motion.div>
+          <motion.div variants={fadeInUp}>
+            <MetricCard
+              title="Páginas Únicas"
+              value={stats?.totalPages ?? 0}
+              icon={Users}
+            />
+          </motion.div>
+          <motion.div variants={fadeInUp}>
+            <MetricCard
+              title="Tendência"
+              value={`+${stats?.trendPercentage ?? 0}%`}
+              icon={BarChart3}
+              subtitle="nos últimos 30 dias"
+            />
+          </motion.div>
+        </motion.div>
       )}
 
       {/* Chart */}
