@@ -173,6 +173,11 @@ export default function ScaledAds() {
                         {ad.score}
                       </Badge>
                     </td>
+                    <td className="p-3">
+                      <Button variant="ghost" size="sm" className="h-7 text-xs" onClick={() => setSelectedAd(ad)}>
+                        Ver Detalhes
+                      </Button>
+                    </td>
                   </tr>
                 ))}
               </tbody>
