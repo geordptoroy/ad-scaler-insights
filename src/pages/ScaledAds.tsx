@@ -9,6 +9,8 @@ import { useState } from "react";
 import { LayoutGrid, List, Image, Video, Layers } from "lucide-react";
 import { AdDetailModal } from "@/components/AdDetailModal";
 import type { Ad } from "@/types/api.types";
+import { motion } from "framer-motion";
+import { staggerContainer, fadeInUp } from "@/components/PageTransition";
 
 const mediaIcons = {
   image: Image,
