@@ -20,6 +20,7 @@ export default function ScaledAds() {
   const [view, setView] = useState<"grid" | "list">("grid");
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
+  const [selectedAd, setSelectedAd] = useState<Ad | null>(null);
 
   const { data, isLoading } = useQuery({
     queryKey: ["scaled-ads", page],
