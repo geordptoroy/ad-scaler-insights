@@ -145,6 +145,8 @@ export default function ScaledAds() {
                   <th className="text-left p-3 text-muted-foreground font-medium">
                     Score
                   </th>
+                  <th className="text-left p-3 text-muted-foreground font-medium">
+                  </th>
                 </tr>
               </thead>
               <tbody>
